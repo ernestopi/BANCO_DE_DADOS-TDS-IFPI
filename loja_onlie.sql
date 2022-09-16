@@ -76,14 +76,9 @@ CREATE TABLE pedidos_mercadorias(
 	data_entrega DATE,
 	valor_unitario FLOAT,
 	PRIMARY KEY(pedido, loja, mercadoria),
-	CONSTRAINT pedido_mercadorias_pedidos FOREIGN KEY(pedido)
-	REFERENCES pedidos(numeros_pedidos),
-	CONSTRAINT pedidos_mercadorias_loja_mercadoria FOREIGN KEY(loja)
-	REFERENCES loja_mercadoria(loja),
-	CONSTRAINT pedidos_mercadoria_loja_mercadoria2 FOREIGN KEY(mercadoria)
-	REFERENCES loja_mercadoria(mercadoria),
-	CONSTRAINT pedidos_mercadoria_status_pedido FOREIGN KEY (status)
-	REFERENCES status_pedido(idStatus_pedido)
+	CONSTRAINT pedido_mercadorias_pedidos FOREIGN KEY(pedido) REFERENCES pedidos(numeros_pedidos),
+	CONSTRAINT pedidos_mercadorias_loja_mercadoria FOREIGN KEY(loja, mercadoria) REFERENCES loja_mercadoria(loja, mercadoria),
+	CONSTRAINT pedidos_mercadoria_status_pedido FOREIGN KEY (status) REFERENCES status_pedido(idStatus_pedido)
 );
 
 
